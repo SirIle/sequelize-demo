@@ -1,0 +1,34 @@
+[
+  {
+    "userid": "user1",
+    "firstname": "Firstname1",
+    "lastname": "Lastname1",
+    "age": 30,
+    "addresses": [
+      {
+        "streetaddress": "Someroad 1 A",
+        "zipcode": "12345"
+      },
+      {
+        "streetaddress": "Olderroad 2",
+        "zipcode": "23456"
+      }
+    ]
+  },
+  {
+    "userid": "user2",
+    "firstname": "Test",
+    "lastname": "User",
+    "age": 40,
+    "addresses": [
+      {
+        "streetaddress": "Someroad 2",
+        "zipcode": "12345"
+      },
+      {
+        "streetaddress": "Olderroad 3",
+        "zipcode": "23456"
+      }
+    ]
+  }
+]

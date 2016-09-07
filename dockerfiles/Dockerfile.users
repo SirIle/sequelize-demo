@@ -1,0 +1,9 @@
+FROM mhart/alpine-node:base
+ADD models models
+ADD config config
+WORKDIR /services/users
+ADD services/users .
+RUN ln -s /services/users/node_modules /models/node_modules
+ENV NODE_ENV test
+EXPOSE 8080
+CMD ["node", "index.js"]

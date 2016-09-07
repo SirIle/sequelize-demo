@@ -1,0 +1,30 @@
+version: '2'
+services:
+  users-v1:
+    image: sequelize-demo/users
+    depends_on:
+      - mariadb
+    environment:
+      - VIRTUAL_HOST=users-v1
+    networks:
+      - ilenet
+  service:
+    image: dockercloud/haproxy
+    links:
+      - users-v1
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    ports:
+      - 80:80
+    networks:
+      - ilenet
+  mariadb:
+    image: mariadb
+    environment:
+      - MYSQL_ROOT_PASSWORD=ile
+    ports:
+      - 3306:3306
+    networks:
+      - ilenet
+networks:
+  ilenet:

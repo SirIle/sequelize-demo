@@ -1,0 +1,33 @@
+{
+  "name": "sequelize-demo",
+  "version": "1.0.0",
+  "description": "A demo about Sequelize and nodejs project structure",
+  "main": "services/users/index.js",
+  "scripts": {
+    "start": "nodemon | bunyan",
+    "db": "scripts/setup-db.sh",
+    "build": "npm stop && npm run container && npm run db && npm run containers && NODE_ENV=test npm test",
+    "test": "mocha --compilers coffee:coffee-script/register --require coffee-coverage/register-istanbul test/ && istanbul report",
+    "testwatch": "mocha --compilers coffee:coffee-script/register --no-exit --watch --reporter min test/02-test-users.coffee",
+    "resetdb": "coffee scripts/initdb.coffee",
+    "container": "docker build -t sequelize-demo/users -f dockerfiles/Dockerfile.users .",
+    "containers": "scripts/start-services.sh",
+    "stop": "docker-compose down"
+  },
+  "author": "Ilkka Anttonen",
+  "license": "ISC",
+  "dependencies": {
+    "bunyan": "^1.8.1",
+    "mysql": "^2.11.1",
+    "sequelize": "^3.24.2"
+  },
+  "devDependencies": {
+    "bunyan": "^1.8.1",
+    "chai": "^3.5.0",
+    "coffee-coverage": "^1.0.1",
+    "istanbul": "^0.4.5",
+    "mocha": "^3.0.2",
+    "restify-clients": "^1.3.0",
+    "sinon": "^1.17.5"
+  }
+}
